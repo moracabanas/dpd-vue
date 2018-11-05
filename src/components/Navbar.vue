@@ -44,8 +44,8 @@
         <template slot="button-content">
           <em>Alberto Mora</em>
         </template>
+        <b-dropdown-item href="#">System Settings</b-dropdown-item>
         <b-dropdown-item href="#">Profile</b-dropdown-item>
-        <b-dropdown-item href="#">Signout</b-dropdown-item>
         <li class="divider" role="separator"></li>
         <b-dropdown-item href="#">Signout</b-dropdown-item>
 
@@ -72,7 +72,7 @@ export default {
 
 .divider {
     height: 1px;
-    margin: 9px 0;
+    margin: 8px 0;
     overflow: hidden;
     background-color: #e5e5e5;
 }
