@@ -59,26 +59,27 @@
 
 <script>
 export default {
-    name: "Navbar"
-
+  name: 'Navbar'
 }
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-#logo { 
-    height: 35px;
+#logo {
+  height: 35px;
 }
 
 .divider {
-    height: 1px;
-    margin: 8px 0;
-    overflow: hidden;
-    background-color: #e5e5e5;
+  height: 1px;
+  margin: 8px 0;
+  overflow: hidden;
+  background-color: #e5e5e5;
 }
-.dropdown-item:focus, .dropdown-item:hover {
-    color: #fff;
-    text-decoration: none;
-    background-color: #DC0032;
+.dropdown-item:focus,
+.dropdown-item:hover {
+  color: #fff;
+  text-decoration: none;
+  background-color: #dc0032;
 }
 </style>
