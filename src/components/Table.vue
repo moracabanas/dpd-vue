@@ -17,7 +17,8 @@ export default {
   mounted() {
     axios
       .get('https://duties.dpd.com.pl/?option=com_duties&task=api.getShipments')
-      .then(response => (this.info = response));
+      .then(response => (this.info = response))
+      .catch(error => console.log(error))
   }
 }
 </script>
