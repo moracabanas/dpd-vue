@@ -11,14 +11,12 @@
 </template>
 
 <script>
-import Skills from './components/Skills.vue';
 import Navbar from './components/Navbar.vue';
 import Table from './components/Table.vue';
 
 export default {
   name: 'app',
   components: {
-    Skills,
     Navbar,
     Table
   }
