@@ -31,7 +31,7 @@ export default {
   data() {
     return {
       tableIsReady: true,
-      recordsPerPage: 10,
+      recordsPerPage: null,
       shipments: [],
       fields: [
         {
@@ -60,10 +60,36 @@ export default {
           sortable: true
         },
         {
+          key: 'payid',
+          label: 'Paid',
+          sortable: false
+        },
+        {
           key: 'CONSIGNEE_SIRET',
           label: 'B2B',
           formatter: value => {return (value ? 'B2B' : '') }
         },
+        /*
+        {
+          key: 'change this',
+          label: 'Admin fee'
+        },
+        {
+          key: 'change this',
+          label: 'DD'
+        },
+        {
+          key: 'ARTICLE_TAX_AMOUNT',
+          label: 'VAT'
+        },
+        {
+          key: 'change this',
+          label: 'Total'
+        },
+        {
+          kay:'change this',
+          label: 'last'
+        }*/
       ],
       errors: [],
     }
@@ -72,7 +98,6 @@ export default {
     expandAdditionalInfo(row) 
     {
       row._showDetails = !row._showDetails;
-      console.log(row);
     }
   },
   mounted() {
@@ -84,6 +109,7 @@ export default {
         });
         console.log(response.data);
         this.shipments = response.data;
+        this.recordsPerPage = shipments.length;
 
       })
       .catch(error => {this.errors.push(error)})
@@ -95,4 +121,10 @@ export default {
 </script>
 
 <style>
+body {
+    font-size: 0.8rem;
+    font-weight: 300;
+    line-height: 1.5;
+    border-collapse: collapse;
+    }
 </style>
