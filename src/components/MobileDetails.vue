@@ -3,7 +3,13 @@
     <br>
     <h3 id="name">Hello {{shipment.CONSIGNEE_NAME_1 | formatName}}</h3>
 
-    <b-card id="parcel" text-variant="black" title="Parcel Number" class="text-center">
+    <b-card
+      id="parcel"
+      text-variant="black"
+      title="Parcel Number"
+      class="text-center"
+      @click="gotosite('https://tracking.dpd.de/parcelstatus?query=' + shipment.MASTER_PARCEL_ID + '&locale=en_D2')"
+    >
       <h4>{{shipment.MASTER_PARCEL_ID}}</h4>
     </b-card>
 
@@ -17,7 +23,7 @@
     </b-card>
     <br>
     <b-card bg-variant="secondary" text-variant="white" title class="text-center">
-      <h5>Instructions to get your parcel from UK</h5>
+      <h5>Regulations link for the parcel from UK</h5>
     </b-card>
   </div>
 </template>
@@ -33,6 +39,10 @@ export default {
     };
   },
   methods: {
+    gotosite(url) {
+      window.location.href = url;
+    }
+
     /*
     formatName(name) {
       return "<span style='text-transform: capitalize'>" + name + "</span>";
