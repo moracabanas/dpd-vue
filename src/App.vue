@@ -1,22 +1,12 @@
 <template>
   <div id="app">
-    <div class="container-fluid">
-      <MobileDetails/>
-      <div class="row-fluid"></div>
+    <div id="nav">
+      <router-link to="/">Home</router-link> |
+      <router-link to="/about">About</router-link>
     </div>
+    <router-view/>
   </div>
 </template>
-
-<script>
-import MobileDetails from "./components/MobileDetails.vue";
-
-export default {
-  name: "app",
-  components: {
-    MobileDetails
-  }
-};
-</script>
 
 <style>
 </style>
