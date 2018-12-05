@@ -8,7 +8,7 @@
       text-variant="black"
       title="Parcel Number"
       class="text-center"
-      @click="gotosite('https://tracking.dpd.de/parcelstatus?query=' + shipment.MASTER_PARCEL_ID + '&locale=en_D2')"
+      @click="gotosite(urlById)"
     >
       <h4>{{shipment.MASTER_PARCEL_ID}}</h4>
     </b-card>
@@ -33,14 +33,15 @@
 export default {
   data() {
     return {
-      id: 18009531582000,
+      id: 18009503264000,
       shipment: [],
       errors: []
     };
   },
   methods: {
     gotosite(url) {
-      window.location.href = url;
+      // window.location.href = url; -- deprecated
+      window.open(url, "_blank");
     }
 
     /*
@@ -58,6 +59,15 @@ export default {
       var upperName = splittedName.toUpperCase().join(" ");
       console.log(upperName);
       }*/
+  },
+  computed: {
+    urlById() {
+      return (
+        "https://tracking.dpd.de/parcelstatus?query=" +
+        this.id +
+        "&locale=en_D2"
+      );
+    }
   },
   filters: {
     formatName: function titleCase(str) {
