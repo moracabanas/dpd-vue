@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container-fluid">
     <br>
     <h3 id="name">Hello {{shipment.CONSIGNEE_NAME_1 | formatName}}</h3>
 
