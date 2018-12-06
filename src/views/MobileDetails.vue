@@ -31,9 +31,10 @@
 
 <script>
 export default {
+  name: "mobiledetails",
+  props: ["id"],
   data() {
     return {
-      id: 18009503264000,
       shipment: [],
       errors: []
     };
