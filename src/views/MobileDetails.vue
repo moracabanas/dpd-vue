@@ -15,16 +15,26 @@
 
     <br>
 
-    <b-card bg-variant="danger" text-variant="white" class="text-center" v-b-toggle.collapse1>
+    <b-card
+      bg-variant="danger"
+      text-variant="white"
+      class="text-center"
+      v-b-toggle.collapse1
+      id="btnDetails"
+    >
       <h5>Details information of the order / parcel (description / sender)</h5>
     </b-card>
-
-    <b-collapse id="collapse1" class="mt-2">
-      <b-tabs>
+    <b-collapse
+      id="collapse1"
+      class="mt-2"
+      v-on:hidden="scrollTo('btnDetails')"
+      v-on:shown="scrollTo('deliveryDetails')"
+    >
+      <b-tabs id="tabs">
         <b-tab title="Consignee" active>
           <br>
           <table class="table" table-striped show-empty flex hover>
-            <tbody>
+            <tbody id="deliveryDetails">
               <tr>
                 <strong>
                   <td>Name</td>
@@ -192,6 +202,13 @@ export default {
     gotosite(url) {
       // window.location.href = url; -- deprecated
       window.open(url, "_blank");
+    },
+
+    scrollTo: function(element) {
+      console.log(element);
+      document
+        .getElementById(element)
+        .scrollIntoView({ behavior: "smooth", block: "nearest" });
     }
 
     /*
