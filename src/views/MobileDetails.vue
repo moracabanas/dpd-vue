@@ -14,50 +14,9 @@
     </b-card>
 
     <br>
-    <b-card bg-variant="danger" text-variant="white" title class="text-center" v-b-toggle.collapse1>
+    <b-card bg-variant="danger" text-variant="white" title class="text-center">
       <h5>Details information of the order / parcel (description / sender)</h5>
     </b-card>
-    <b-collapse id="collapse1" class="mt-2">
-      <b-card>
-        <p class="card-text">Collapse contents Here</p>
-        <table class="table" table-striped show-empty flex hover>
-          <tbody>
-            <tr>
-              <td>Name</td>
-              <td>{{ name }}</td>
-            </tr>
-            <tr>
-              <td>Number of pieces</td>
-              <td>{{ row.item.pieces }}</td>
-            </tr>
-            <tr>
-              <td>Article number</td>
-              <td>{{ row.item.ARTICLE_NUMBER }}</td>
-            </tr>
-            <tr>
-              <td>Description</td>
-              <td>{{ row.item.ARTICLE_DESC }}</td>
-            </tr>
-            <tr>
-              <td>Weight</td>
-              <td>{{ row.item.ARTICLE_WEIGHT}}</td>
-            </tr>
-            <tr>
-              <td>Customs Value</td>
-              <td>{{ row.item.ARTICLE_CUSTOMS_VALUE }}</td>
-            </tr>
-            <tr>
-              <td>Currency</td>
-              <td>{{ row.item.ARTICLE_CUSTOMS_CURRENCY }}</td>
-            </tr>
-            <tr>
-              <td>Tax Amount</td>
-              <td>NO SALE ESTE DATO</td>
-            </tr>
-          </tbody>
-        </table>
-      </b-card>
-    </b-collapse>
     <br>
     <b-card id="instructions" text-variant="white" title class="text-center">
       <h5>Instructions to get your parcel from UK</h5>
