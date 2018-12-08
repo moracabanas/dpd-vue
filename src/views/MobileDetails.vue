@@ -14,49 +14,157 @@
     </b-card>
 
     <br>
+
     <b-card bg-variant="danger" text-variant="white" class="text-center" v-b-toggle.collapse1>
       <h5>Details information of the order / parcel (description / sender)</h5>
     </b-card>
+
     <b-collapse id="collapse1" class="mt-2">
-      <b-card>
-        <p class="card-text">Collapse contents Here</p>
-        <table class="table" table-striped show-empty flex hover>
-          <tbody>
-            <tr>
-              <td>Name</td>
-              <td>{{ name }}</td>
-            </tr>
-            <tr>
-              <td>Number of pieces</td>
-              <td>{{ row.item.pieces }}</td>
-            </tr>
-            <tr>
-              <td>Article number</td>
-              <td>{{ row.item.ARTICLE_NUMBER }}</td>
-            </tr>
-            <tr>
-              <td>Description</td>
-              <td>{{ row.item.ARTICLE_DESC }}</td>
-            </tr>
-            <tr>
-              <td>Weight</td>
-              <td>{{ row.item.ARTICLE_WEIGHT}}</td>
-            </tr>
-            <tr>
-              <td>Customs Value</td>
-              <td>{{ row.item.ARTICLE_CUSTOMS_VALUE }}</td>
-            </tr>
-            <tr>
-              <td>Currency</td>
-              <td>{{ row.item.ARTICLE_CUSTOMS_CURRENCY }}</td>
-            </tr>
-            <tr>
-              <td>Tax Amount</td>
-              <td>NO SALE ESTE DATO</td>
-            </tr>
-          </tbody>
-        </table>
-      </b-card>
+      <b-tabs>
+        <b-tab title="Consignee" active>
+          <br>
+          <table class="table" table-striped show-empty flex hover>
+            <tbody>
+              <tr>
+                <strong>
+                  <td>Name</td>
+                </strong>
+                <td>{{ shipment.CONSIGNEE_NAME_1 }}</td>
+              </tr>
+
+              <tr>
+                <strong>
+                  <td>Consignee address</td>
+                </strong>
+                <td>{{ shipment.CONSIGNEE_ADDRESS_1 }}</td>
+              </tr>
+
+              <tr>
+                <strong>
+                  <td>Consignee city</td>
+                </strong>
+                <td>{{ shipment.CONSIGNEE_CITY }}</td>
+              </tr>
+
+              <tr>
+                <strong>
+                  <td>Consignee country</td>
+                </strong>
+                <td>{{ shipment.CONSIGNEE_COUNTRY }}</td>
+              </tr>
+
+              <tr>
+                <strong>
+                  <td>Consignee postcode</td>
+                </strong>
+                <td>{{ shipment.CONSIGNEE_ZIP }}</td>
+              </tr>
+
+              <tr>
+                <strong>
+                  <td>Consignee contact</td>
+                </strong>
+                <td>{{ shipment.CONSIGNEE_CONTACT }}</td>
+              </tr>
+
+              <tr>
+                <strong>
+                  <td>Consignee phone</td>
+                </strong>
+                <td>{{ shipment.CONSIGNEE_PHONE }}</td>
+              </tr>
+
+              <tr>
+                <strong>
+                  <td>Consignee email</td>
+                </strong>
+                <td>{{ shipment.CONSIGNEE_EMAIL }}</td>
+              </tr>
+
+              <tr>
+                <strong>
+                  <td>Consignee SIRET</td>
+                </strong>
+                <td>{{ shipment.CONSIGNEE_SIRET }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </b-tab>
+
+        <b-tab title="Sender">
+          <br>
+          <table class="table" table-striped show-empty flex hover>
+            <tbody>
+              <tr>
+                <strong>
+                  <td>Name</td>
+                </strong>
+                <td>{{ shipment.SHIPPER_NAME_1 }}</td>
+              </tr>
+
+              <tr>
+                <strong>
+                  <td>Consignee address</td>
+                </strong>
+                <td>{{ shipment.SHIPPER_ADDRESS_1 }}</td>
+              </tr>
+
+              <tr>
+                <strong>
+                  <td>Consignee city</td>
+                </strong>
+                <td>{{ shipment.SHIPPER_CITY }}</td>
+              </tr>
+
+              <tr>
+                <strong>
+                  <td>Consignee country</td>
+                </strong>
+                <td>{{ shipment.SHIPPER_COUNTRY }}</td>
+              </tr>
+
+              <tr>
+                <strong>
+                  <td>Consignee postcode</td>
+                </strong>
+                <td>{{ shipment.SHIPPER_ZIP }}</td>
+              </tr>
+
+              <tr>
+                <strong>
+                  <td>Consignee contact</td>
+                </strong>
+                <td>{{ shipment.SHIPPER_CONTACT }}</td>
+              </tr>
+
+              <tr>
+                <strong>
+                  <td>Consignee phone</td>
+                </strong>
+                <td>{{ shipment.SHIPPER_PHONE }}</td>
+              </tr>
+
+              <tr>
+                <strong>
+                  <td>Consignee email</td>
+                </strong>
+                <td>{{ shipment.SHIPPER_EMAIL }}</td>
+              </tr>
+
+              <tr>
+                <strong>
+                  <td>Consignee SIRET</td>
+                </strong>
+                <td>{{ shipment.SHIPPER_SIRET }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </b-tab>
+
+        <b-tab title="disabled" disabled>
+          <br>Disabled tab!
+        </b-tab>
+      </b-tabs>
     </b-collapse>
     <br>
     <b-card id="instructions" text-variant="white" title class="text-center">
