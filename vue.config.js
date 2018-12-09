@@ -6,11 +6,9 @@ module.exports = {
   // sub-path here. For example, if your app is deployed at
   // https://www.foobar.com/my-app/
   // then change this to '/my-app/'
-  baseUrl: "/dpd-vue",
+  baseUrl: "/dpd-vue"
 
   // where to output built files
-  outputDir: "dist"
-
   // whether to use eslint-loader for lint on save.
   // valid values: true | false | 'error'
 };
