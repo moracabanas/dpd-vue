@@ -27,8 +27,8 @@
     <b-collapse
       id="collapse1"
       class="mt-2"
-      v-on:hidden="scrollTo('btnDetails')"
-      v-on:shown="scrollTo('deliveryDetails')"
+      :hidden="scrollTo('btnDetails')"
+      :shown="scrollTo('deliveryDetails')"
     >
       <b-tabs id="tabs">
         <b-tab title="Consignee" active>
