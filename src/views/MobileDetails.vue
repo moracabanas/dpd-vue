@@ -205,7 +205,7 @@ export default {
     },
 
     scrollTo: function(element) {
-      console.log(element);
+      //console.log(element);
       document
         .getElementById(element)
         .scrollIntoView({ behavior: "smooth", block: "nearest" });
