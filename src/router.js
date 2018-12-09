@@ -11,7 +11,7 @@ export default new Router({
       name: "mobiledetails",
       component: MobileDetails,
       props: route => ({
-        id: route.query.id
+        hash: route.query.hash
       })
     },
     {

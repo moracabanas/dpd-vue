@@ -191,7 +191,7 @@
 <script>
 export default {
   name: "mobiledetails",
-  props: ["id"],
+  props: ["hash"],
   data() {
     return {
       shipment: [],
@@ -229,9 +229,10 @@ export default {
   },
   computed: {
     urlById() {
+      if (!this.shipment.MASTER_PARCEL_ID) return "";
       return (
         "https://tracking.dpd.de/parcelstatus?query=" +
-        this.id +
+        this.shipment.MASTER_PARCEL_ID +
         "&locale=en_D2"
       );
     }
@@ -257,7 +258,7 @@ export default {
     axios
       .get(
         "https://duties.dpd.com.pl/?option=com_duties&task=api.getShipment&shipment_id=" +
-          this.id
+          this.hash
       )
       .then(response => {
         console.log(response.data);
