@@ -199,6 +199,26 @@ export default {
     };
   },
   methods: {
+    getShipment: function(language) {
+      axios
+        .get(
+          "https://duties.dpd.com.pl/?option=com_duties&task=api.getShipment&shipment_id=" +
+            this.hash +
+            "&lang=" +
+            language
+        )
+        .then(response => {
+          console.log(response.data);
+          this.shipment = response.data;
+          //console.log(this.$route.query.id);
+        })
+        .catch(error => {
+          this.errors.push(error);
+        });
+
+      //disabled console log  .catch(error => console.log(error)) // eslint-disable-line no-console
+    },
+
     gotosite(url) {
       // window.location.href = url; -- deprecated
       window.open(url, "_blank");
@@ -253,21 +273,7 @@ export default {
     }
   },
   mounted() {
-    axios
-      .get(
-        "https://duties.dpd.com.pl/?option=com_duties&task=api.getShipment&shipment_id=" +
-          this.hash
-      )
-      .then(response => {
-        console.log(response.data);
-        this.shipment = response.data;
-        //console.log(this.$route.query.id);
-      })
-      .catch(error => {
-        this.errors.push(error);
-      });
-
-    //disabled console log  .catch(error => console.log(error)) // eslint-disable-line no-console
+    this.getShipment("ES");
   }
 };
 </script>
