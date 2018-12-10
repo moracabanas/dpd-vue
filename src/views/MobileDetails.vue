@@ -191,7 +191,7 @@
 <script>
 export default {
   name: "mobiledetails",
-  props: ["hash"],
+  props: ["hash", "lang"],
   data() {
     return {
       shipment: [],
@@ -199,13 +199,13 @@ export default {
     };
   },
   methods: {
-    getShipment: function(language) {
+    getShipment: function(location) {
       axios
         .get(
           "https://duties.dpd.com.pl/?option=com_duties&task=api.getShipment&shipment_id=" +
             this.hash +
             "&lang=" +
-            language
+            location
         )
         .then(response => {
           console.log(response.data);
@@ -273,7 +273,7 @@ export default {
     }
   },
   mounted() {
-    this.getShipment("ES");
+    this.getShipment(this.lang);
   }
 };
 </script>
