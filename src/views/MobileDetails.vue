@@ -103,7 +103,7 @@
 
         <b-tab title="Sender">
           <br>
-          <table class="table" table-striped show-empty flex hover>
+          <table class="table" flex hover>
             <tbody>
               <tr>
                 <strong>
