@@ -16,11 +16,11 @@
     <br>
 
     <b-card
+      id="btnDetails"
       bg-variant="danger"
       text-variant="white"
       class="text-center"
       v-b-toggle.collapse1
-      id="btnDetails"
     >
       <h5>Details information of the order / parcel (description / sender)</h5>
     </b-card>
@@ -195,11 +195,13 @@ export default {
   data() {
     return {
       shipment: [],
-      errors: []
+      errors: [],
+      loading: false
     };
   },
   methods: {
     getShipment: function(location) {
+      this.loading = true;
       axios
         .get("https://duties.dpd.com.pl/", {
           params: {
@@ -210,11 +212,13 @@ export default {
           }
         })
         .then(response => {
+          this.loading = false;
           console.log(response.data);
           this.shipment = response.data;
           //console.log(this.$route.query.id);
         })
         .catch(error => {
+          this.loading = false;
           this.errors.push(error);
         });
 
