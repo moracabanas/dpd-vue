@@ -201,9 +201,9 @@ export default {
   methods: {
     getShipment: function(location) {
       axios
-        .get("https://duties.dpd.com.pl", {
+        .get("https://duties.dpd.com.pl/", {
           params: {
-            options: "com_duties",
+            option: "com_duties",
             task: "api.getShipment",
             shipment_id: this.hash,
             lang: location
