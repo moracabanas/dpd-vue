@@ -200,20 +200,15 @@ export default {
   },
   methods: {
     getShipment: function(location) {
-      var params = {
-        options: "com_duties",
-        task: "api.getShipment",
-        shipment_id: this.hash,
-        lang: location
-      };
-
       axios
-        .get(
-          "https://duties.dpd.com.pl/?option=com_duties&task=api.getShipment&shipment_id=" +
-            this.hash +
-            "&lang=" +
-            location
-        )
+        .get("https://duties.dpd.com.pl", {
+          params: {
+            options: "com_duties",
+            task: "api.getShipment",
+            shipment_id: this.hash,
+            lang: location
+          }
+        })
         .then(response => {
           console.log(response.data);
           this.shipment = response.data;
