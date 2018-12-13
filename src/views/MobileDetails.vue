@@ -1,12 +1,13 @@
 <template>
   <div class="container-fluid">
     <br>
-    <h3 id="name">Hello {{shipment.CONSIGNEE_NAME_1 | formatName}}</h3>
-
+    <!--Hello-->
+    <h3 id="name">{{ language.EMAIL_GREETING }} {{shipment.CONSIGNEE_NAME_1 | formatName}}</h3>
+    <!--Parcel Number-->
     <b-card
       id="parcel"
       text-variant="black"
-      title="Parcel Number"
+      :title="language.SHIPMENT"
       class="text-center"
       @click="gotosite(urlById)"
     >
@@ -22,7 +23,8 @@
       class="text-center"
       v-b-toggle.collapse1
     >
-      <h5>Details information of the order / parcel (description / sender)</h5>
+      <!--Details information of the order / parcel (description / sender)-->
+      <h5>{{ language.SHIPMENT_SUMMARY }}</h5>
     </b-card>
     <b-collapse
       id="collapse1"
@@ -31,69 +33,78 @@
       v-on:shown="scrollTo('tabs')"
     >
       <b-tabs id="tabs">
-        <b-tab title="Consignee" active>
+        <b-tab :title="language.CONSIGNEE" active>
           <br>
           <table class="table" table-striped show-empty flex hover>
             <tbody id="deliveryDetails">
               <tr>
                 <strong>
-                  <td>Name</td>
+                  <!--Consignee Name-->
+                  <td>{{ language.CONSIGNEE + (" ") + language.NAME }}</td>
                 </strong>
                 <td>{{ shipment.CONSIGNEE_NAME_1 }}</td>
               </tr>
 
               <tr>
                 <strong>
-                  <td>Consignee address</td>
+                  <!--Consignee address-->
+                  <td>{{ language.ADDRESS }}</td>
                 </strong>
                 <td>{{ shipment.CONSIGNEE_ADDRESS_1 }}</td>
               </tr>
 
               <tr>
                 <strong>
-                  <td>Consignee city</td>
+                  <!--Consignee city-->
+                  <td>{{ language.CITY }}</td>
                 </strong>
                 <td>{{ shipment.CONSIGNEE_CITY }}</td>
               </tr>
 
               <tr>
                 <strong>
-                  <td>Consignee country</td>
+                  <!--Consignee country-->
+                  <td>{{language.COUNTRY}}</td>
                 </strong>
                 <td>{{ shipment.CONSIGNEE_COUNTRY }}</td>
               </tr>
 
               <tr>
                 <strong>
-                  <td>Consignee postcode</td>
+                  <!--Consignee postcode-->
+                  <td>{{ language.ZIP }}</td>
                 </strong>
                 <td>{{ shipment.CONSIGNEE_ZIP }}</td>
               </tr>
 
               <tr>
                 <strong>
-                  <td>Consignee contact</td>
+                  <!--Consignee contact-->
+                  <td class="red">CONSIGNEE CONTACT</td>
                 </strong>
                 <td>{{ shipment.CONSIGNEE_CONTACT }}</td>
               </tr>
 
               <tr>
                 <strong>
-                  <td>Consignee phone</td>
+                  <!--Consignee phone-->
+                  <td class="red">Consignee phone</td>
                 </strong>
                 <td>{{ shipment.CONSIGNEE_PHONE }}</td>
               </tr>
 
               <tr>
                 <strong>
-                  <td>Consignee email</td>
+                  <!--Consignee email-->
+                  <td class="red">Consignee email</td>
                 </strong>
                 <td>{{ shipment.CONSIGNEE_EMAIL }}</td>
               </tr>
 
               <tr>
                 <strong>
-                  <td>Consignee SIRET</td>
+                  <!--Consignee SIRET-->
+                  <td class="red">Consignee SIRET</td>
                 </strong>
                 <td>{{ shipment.CONSIGNEE_SIRET }}</td>
               </tr>
@@ -178,11 +189,18 @@
     </b-collapse>
     <br>
     <b-card id="instructions" text-variant="white" title class="text-center">
-      <h5>Instructions to get your parcel from UK</h5>
+      <!--Instructions to get your parcel from UK-->
+      <h5>{{ language.OGONE_ONLINE_PAYMENT_PROCESS }}</h5>
     </b-card>
     <br>
-    <b-card bg-variant="secondary" text-variant="white" title class="text-center">
-      <h5>Regulations link for the parcel from UK</h5>
+    <b-card
+      bg-variant="secondary"
+      text-variant="white"
+      title
+      class="text-center"
+      @click="gotosite(language.EU_LEGAL_URL)"
+    >
+      <h5 class="red">Regulations link for the parcel from UK</h5>
     </b-card>
   </div>
 </template>
@@ -195,6 +213,8 @@ export default {
   data() {
     return {
       shipment: [],
+      language: [],
+      languages: [],
       errors: [],
       loading: false
     };
@@ -213,9 +233,10 @@ export default {
         })
         .then(response => {
           this.loading = false;
-          console.log(response.data);
+          //console.log(response.data);
           this.shipment = response.data;
-          //console.log(this.$route.query.id);
+          this.language = response.data["language"];
+          console.log(response.data["language"]);
         })
         .catch(error => {
           this.loading = false;
@@ -223,6 +244,26 @@ export default {
         });
 
       //disabled console log  .catch(error => console.log(error)) // eslint-disable-line no-console
+    },
+
+    getLanguages() {
+      this.loading = true;
+      axios
+        .get("https://duties.dpd.com.pl/", {
+          params: {
+            option: "com_duties",
+            task: "api.getLanguages"
+          }
+        })
+        .then(response => {
+          this.loading = false;
+          //console.log(response.data);
+          this.languages = response.data;
+        })
+        .catch(error => {
+          this.loading = false;
+          this.errors.push(error);
+        });
     },
 
     gotosite(url) {
@@ -295,5 +336,9 @@ export default {
 
 #name {
   text-align: center;
+}
+
+.red {
+  color: red;
 }
 </style>
