@@ -7,7 +7,10 @@
     <!-- dropdown-item-buttons.vue -->
     <div>
       <b-dropdown id="ddown-buttons" text="Language" class="m-2" @click="getLanguages()">
-        <b-dropdown-item-button v-for="location in languages">{{location}}</b-dropdown-item-button>
+        <b-dropdown-item-button
+          v-for="(location, languages) in languages"
+          @click="setLocation(languages)"
+        >{{location}}</b-dropdown-item-button>
       </b-dropdown>
     </div>
 
@@ -272,6 +275,11 @@ export default {
           this.loading = false;
           this.errors.push(error);
         });
+    },
+
+    setLocation(location) {
+      this.getShipment(location);
+      console.log(location);
     },
 
     gotosite(url) {
