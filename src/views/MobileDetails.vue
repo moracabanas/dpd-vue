@@ -1,18 +1,20 @@
 <template>
   <div class="container-fluid">
     <br>
-    <!--Hello-->
-    <h3 id="name">{{ language.EMAIL_GREETING }} {{shipment.CONSIGNEE_NAME_1 | formatName}}</h3>
-
     <!-- dropdown-item-buttons.vue -->
-    <div>
-      <b-dropdown id="ddown-buttons" text="Language" class="m-2" @click="getLanguages()">
+    <b-col id="ddown" md="12" class="text-center">
+      <b-dropdown id="ddown-buttons" text="Language" class @click="getLanguages()">
+        <!-- v-for="(location, languages) in languages" -->
         <b-dropdown-item-button
           v-for="(location, languages) in languages"
+          :key="languages"
           @click="setLocation(languages)"
         >{{location}}</b-dropdown-item-button>
       </b-dropdown>
-    </div>
+    </b-col>
+    <br>
+    <!--Hello-->
+    <h3 id="name">{{ language.EMAIL_GREETING }} {{shipment.CONSIGNEE_NAME_1 | formatName}}</h3>
 
     <!--Parcel Number-->
     <b-card
@@ -213,6 +215,7 @@
     >
       <h5>Regulations link for the parcel from UK</h5>
     </b-card>
+    <br>
   </div>
 </template>
 
