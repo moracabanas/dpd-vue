@@ -3,6 +3,14 @@
     <br>
     <!--Hello-->
     <h3 id="name">{{ language.EMAIL_GREETING }} {{shipment.CONSIGNEE_NAME_1 | formatName}}</h3>
+
+    <!-- dropdown-item-buttons.vue -->
+    <div>
+      <b-dropdown id="ddown-buttons" text="Language" class="m-2" @click="getLanguages()">
+        <b-dropdown-item-button v-for="location in languages">{{location}}</b-dropdown-item-button>
+      </b-dropdown>
+    </div>
+
     <!--Parcel Number-->
     <b-card
       id="parcel"
@@ -200,7 +208,7 @@
       class="text-center"
       @click="gotosite(language.EU_LEGAL_URL)"
     >
-      <h5 class="red">Regulations link for the parcel from UK</h5>
+      <h5>Regulations link for the parcel from UK</h5>
     </b-card>
   </div>
 </template>
@@ -257,7 +265,7 @@ export default {
         })
         .then(response => {
           this.loading = false;
-          //console.log(response.data);
+          console.log(response.data);
           this.languages = response.data;
         })
         .catch(error => {
@@ -321,6 +329,7 @@ export default {
   },
   mounted() {
     this.getShipment(this.lang);
+    this.getLanguages();
   }
 };
 </script>
