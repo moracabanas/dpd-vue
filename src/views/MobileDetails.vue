@@ -206,7 +206,13 @@
       </b-tabs>
     </b-collapse>
     <br>
-    <b-card id="instructions" text-variant="white" title class="text-center">
+    <b-card
+      id="instructions"
+      text-variant="white"
+      title
+      class="text-center"
+      @click="gotopayment('8a@awLko')"
+    >
       <!--Instructions to get your parcel from UK-->
       <h5>{{ language.OGONE_ONLINE_PAYMENT_PROCESS }}</h5>
     </b-card>
@@ -293,6 +299,17 @@ export default {
     gotosite(url) {
       // window.location.href = url; -- deprecated
       window.open(url, "_blank");
+    },
+
+    gotopayment(hash) {
+      window.open(
+        "https://duties.dpdgroup.com/index.php/component/duties/payment/pay?layout=ogone" +
+          "&hash=" +
+          hash +
+          "&lang=" +
+          this.lang,
+        "_blank"
+      );
     },
 
     scrollTo: function(element) {
