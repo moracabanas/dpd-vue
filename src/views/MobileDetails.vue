@@ -4,11 +4,11 @@
     <!-- dropdown-item-buttons.vue -->
     <img
       id="seurlogo"
-      width="260"
+      width="250"
       src="https://upload.wikimedia.org/wikipedia/commons/5/57/SEUR_logo.svg"
       style="float: left;"
     >
-    <b-col id="ddown" md="12" class="text-center">
+    <b-col id="ddown" md="12" class="text-right">
       <b-dropdown
         id="ddown-buttons"
         :text="shipment.language.COUNTRY"
