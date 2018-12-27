@@ -2,8 +2,19 @@
   <div class="container-fluid">
     <br>
     <!-- dropdown-item-buttons.vue -->
+    <img
+      id="seurlogo"
+      width="260"
+      src="https://upload.wikimedia.org/wikipedia/commons/5/57/SEUR_logo.svg"
+      style="float: left;"
+    >
     <b-col id="ddown" md="12" class="text-center">
-      <b-dropdown id="ddown-buttons" text="Language" class @click="getLanguages()">
+      <b-dropdown
+        id="ddown-buttons"
+        :text="shipment.language.COUNTRY"
+        class
+        @click="getLanguages()"
+      >
         <!-- v-for="(location, languages) in languages" -->
         <b-dropdown-item-button
           v-for="(location, languages) in languages"
@@ -29,13 +40,7 @@
 
     <br>
 
-    <b-card
-      id="btnDetails"
-      bg-variant="danger"
-      text-variant="white"
-      class="text-center"
-      v-b-toggle.collapse1
-    >
+    <b-card id="btnDetails" text-variant="white" class="text-center" v-b-toggle.collapse1>
       <!--Details information of the order / parcel (description / sender)-->
       <h5>{{ language.SHIPMENT_SUMMARY }}</h5>
     </b-card>
@@ -350,8 +355,12 @@ export default {
   background-color: rgb(179, 179, 179);
 }
 
+#btnDetails {
+  background-color: rgb(0, 99, 179);
+}
+
 #instructions {
-  background-color: rgb(129, 24, 46);
+  background-color: rgb(108, 154, 211);
 }
 
 #name {
