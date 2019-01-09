@@ -6,11 +6,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-<<<<<<< HEAD
     "deploy": "npm run build; push-dir --dir=dist --branch=gh-pages --cleanup"
-=======
-    "deploy": "npm run build && push-dir --dir=dist --branch=gh-pages --cleanup"
->>>>>>> 14a5e60f7687f38e3e7b23d8b77783077a4406af
   },
   "dependencies": {
     "bootstrap-vue": "^2.0.0-rc.11",
